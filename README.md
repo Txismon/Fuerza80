@@ -1,4 +1,4 @@
-# Fuerza 77 — PWA de entrenamiento
+# Fuerza80 — PWA de entrenamiento
 
 Aplicación web instalable, sin dependencias externas y sin backend.
 
@@ -17,7 +17,7 @@ Aplicación web instalable, sin dependencias externas y sin backend.
 1. Publica el contenido de esta carpeta en un hosting estático HTTPS (GitHub Pages, Netlify o Cloudflare Pages). No hace falta servidor ni base de datos.
 2. Abre la URL en Safari (no desde Archivos).
 3. Pulsa Compartir > Añadir a pantalla de inicio.
-4. Abre el icono de Fuerza 77.
+4. Abre el icono de Fuerza80.
 
 ## Probar en un ordenador
 Desde esta carpeta: `python3 -m http.server 8080`, luego abre `http://localhost:8080`.
@@ -48,9 +48,17 @@ Las pruebas ejecutan la lógica de la app con DOM y almacenamiento simulados: re
 
 ## Actualizar un despliegue
 Publica todos los archivos estáticos juntos bajo HTTPS, en la misma ruta y origen para conservar localStorage. No publiques copias personales. Configura `sw.js` con `Cache-Control: no-cache`. Cada nueva entrega que cambie assets debe cambiar el nombre de caché en `sw.js`.
-La nueva caché se prepara completa y espera al cierre de todas las pestañas/PWA antiguas. Después, vuelve a abrir para usar la actualización. No se fuerza una recarga durante un entrenamiento. Las cachés ajenas a Fuerza 77 se conservan.
+La nueva caché se prepara completa y espera al cierre de todas las pestañas/PWA antiguas. Después, vuelve a abrir para usar la actualización. No se fuerza una recarga durante un entrenamiento. Las cachés ajenas a Fuerza80 se conservan.
 
 ## Comprobación manual pendiente
 En Safari iPhone físico, comprobar instalación standalone, teclado decimal, navegación entre campos, scroll a 320/375 px, recarga y cierre durante una serie, exportación/importación desde Archivos, y apertura en modo avión tras una primera visita completa. Verificar también la actualización con dos ventanas abiertas y el temporizador tras volver del segundo plano; iOS no garantiza avisos en segundo plano.
 
 Si aparece una advertencia de datos ilegibles, no se sobrescribe el almacenamiento. Conserva su contenido original antes de repararlo; no borres los datos del sitio para intentar recuperarlos. Evita editar simultáneamente en varias ventanas: no hay sincronización entre ellas.
+
+
+## Guías de ejercicios (Fuerza80)
+Cada ejercicio incluye un botón con icono de imagen junto a Editar. Abre una ilustración con inicio/final y una explicación breve. Se cierra con la X, Escape o pulsando fuera. Los 18 SVG se incluyen en la caché offline, sin servicios de imágenes externos. Las guías representan el ejercicio original, aunque se personalice su nombre. Dominadas y sentadilla indican la variante representada. No cambian las cargas, rutinas ni el objetivo corporal.
+
+Se mantienen las claves locales `fuerza77-data-v1` y `fuerza77-drafts-v1` para recuperar los datos existentes. Para conservarlos al actualizar, publica en el mismo origen y ruta de siempre; cambiar la dirección de GitHub Pages requiere exportar/importar las sesiones previamente. No se incluyen borradores en el backup v1.
+
+Prueba opcional de navegador con Playwright y Chromium instalados, servidor en localhost:8080: `node tests/browser.cjs`. Comprueba las 18 guías, cierre del modal, ausencia de errores JS, conservación del borrador y acceso offline. El ejecutable predeterminado es `/usr/bin/chromium`.
